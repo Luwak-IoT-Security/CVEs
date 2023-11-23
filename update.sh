@@ -6,6 +6,7 @@ LuwakLab CVE PoC Exploits offers a curated collection of expertly crafted proof-
 EOM
 
 for i in $(find database -name 'README.md' | sort -r); do
-    echo "* [$(cat $i | grep '^# CVE' | cut -d ' ' -f 2-)]($(echo $i | cut -d '/' -f 2)/)";
-done >> README.md
-
+    cve_text=$(cat $i | grep '^# CVE' | cut -d ' ' -f 2-)
+    directory=$(echo $i | cut -d '/' -f 2)
+    echo "* [$cve_text](database/$directory/)" >> README.md
+done
